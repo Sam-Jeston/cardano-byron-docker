@@ -1,0 +1,9 @@
+FROM haskell:8.6.5
+
+RUN apt-get update && apt-get install git liblzma-dev build-essential libgflags-dev zlib1g-dev libbz2-dev liblz4-dev libzstd-dev librocksdb-dev libssl-dev -y
+RUN git clone https://github.com/input-output-hk/cardano-wallet.git /cardano-wallet
+WORKDIR /cardano-wallet
+RUN stack install
+
+COPY wallet /wallet
+CMD /wallet/wallet-start.sh

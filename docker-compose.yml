@@ -1,0 +1,68 @@
+version: '3'
+services:
+  core0:
+    build:
+      context: .
+      dockerfile: DockerfileCardanoSl
+    ports:
+      - "127.0.0.1:3000:3000"
+    network_mode: host
+    environment:
+      - sysStart
+    command: sh /byron/core0.sh
+    volumes:
+      - ./byron:/byron
+  core1:
+    build:
+      context: .
+      dockerfile: DockerfileCardanoSl
+    ports:
+      - "3001:3001"
+    network_mode: host
+    environment:
+      - sysStart
+    command: sh /byron/core1.sh
+    volumes:
+      - ./byron:/byron
+  core2:
+    build:
+      context: .
+      dockerfile: DockerfileCardanoSl
+    ports:
+      - "3002:3002"
+    network_mode: host
+    environment:
+      - sysStart
+    command: sh /byron/core2.sh
+    volumes:
+      - ./byron:/byron
+  relay:
+    build:
+      context: .
+      dockerfile: DockerfileCardanoSl
+    ports:
+      - "3100:3100"
+    network_mode: host
+    environment:
+      - sysStart
+    command: sh /byron/relay.sh
+    volumes:
+      - ./byron:/byron
+  http-bridge:
+    build:
+      context: .
+      dockerfile: DockerfileHttpBridge
+    ports:
+      - "8090:8090"
+    network_mode: host
+    volumes:
+      - ./wallet:/wallet
+  wallet:
+    build:
+      context: .
+      dockerfile: DockerfileCardanoWallet
+    ports:
+      - "8080:8080"
+    network_mode: host
+    volumes:
+      - ./wallet:/wallet

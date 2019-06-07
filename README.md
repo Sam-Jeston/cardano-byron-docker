@@ -1,4 +1,4 @@
-# Byron Era SL Demo cluster with V2 API
+# Byron era demo cluster with cardano-http-bridge and cardano-wallet
 
 ## Building
 Rebuild all images:
@@ -12,8 +12,9 @@ To manually rebuild a single image:
 ## Starting
 `./start.sh`
 
+This script seeds 10 wallets, so the API can be tested against
+
+You can see them at `http://localhost:8080/v2/wallets`
+
 ## Stoping
 `./stop.sh`
-
-### Accessing a funded wallet
-TODO

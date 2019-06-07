@@ -1,0 +1,9 @@
+FROM node:10
+
+RUN mkdir /seed
+WORKDIR /seed
+
+COPY seed /seed
+
+RUN npm i
+CMD sh start.sh

@@ -1,11 +1,12 @@
 version: '3'
 services:
   core0:
-    build:
-      context: .
-      dockerfile: DockerfileCardanoSl
+    image: samjeston/cardano-byron-sl
+    # build:
+    #   context: .
+    #   dockerfile: DockerfileCardanoSl
     ports:
-      - "127.0.0.1:3000:3000"
+      - "3000:3000"
     network_mode: host
     environment:
       - sysStart
@@ -13,9 +14,10 @@ services:
     volumes:
       - ./byron:/byron
   core1:
-    build:
-      context: .
-      dockerfile: DockerfileCardanoSl
+    image: samjeston/cardano-byron-sl
+    # build:
+    #   context: .
+    #   dockerfile: DockerfileCardanoSl
     ports:
       - "3001:3001"
     network_mode: host
@@ -25,9 +27,10 @@ services:
     volumes:
       - ./byron:/byron
   core2:
-    build:
-      context: .
-      dockerfile: DockerfileCardanoSl
+    image: samjeston/cardano-byron-sl
+    # build:
+    #   context: .
+    #   dockerfile: DockerfileCardanoSl
     ports:
       - "3002:3002"
     network_mode: host
@@ -37,9 +40,10 @@ services:
     volumes:
       - ./byron:/byron
   relay:
-    build:
-      context: .
-      dockerfile: DockerfileCardanoSl
+    image: samjeston/cardano-byron-sl
+    # build:
+    #   context: .
+    #   dockerfile: DockerfileCardanoSl
     ports:
       - "3100:3100"
     network_mode: host
@@ -49,9 +53,10 @@ services:
     volumes:
       - ./byron:/byron
   http-bridge:
-    build:
-      context: .
-      dockerfile: DockerfileHttpBridge
+    image: samjeston/cardano-http-bridge
+    # build:
+    #   context: .
+    #   dockerfile: DockerfileHttpBridge
     ports:
       - "8090:8090"
     network_mode: host
@@ -68,6 +73,6 @@ services:
       - ./wallet:/wallet
   seed:
     build:
-      context: ./wallet
+      context: ./seed
       dockerfile: DockerfileSeed
     network_mode: host

@@ -3,7 +3,7 @@ FROM node:10
 RUN mkdir /seed
 WORKDIR /seed
 
-COPY seed /seed
+COPY . /seed
 
 RUN npm i
 CMD sh start.sh

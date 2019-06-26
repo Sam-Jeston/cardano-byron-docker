@@ -63,9 +63,10 @@ services:
     volumes:
       - ./wallet:/wallet
   wallet:
-    build:
-      context: .
-      dockerfile: DockerfileCardanoWallet
+    image: samjeston/cardano-wallet
+    # build:
+    #   context: .
+    #   dockerfile: DockerfileCardanoWallet
     ports:
       - "8080:8080"
     network_mode: host

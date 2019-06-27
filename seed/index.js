@@ -35,7 +35,7 @@ async function main() {
     await Promise.all(mnemonics.map((mnemonic, index) => {
       const name = walletNames[index]
       const payload = generateImportPayload(mnemonic, name)
-      return axios.post('http://localhost:8080/v2/wallets', payload)
+      return axios.post('http://localhost:8088/v2/wallets', payload)
     }))
   } catch (e) {
     console.log(e)

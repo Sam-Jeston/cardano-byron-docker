@@ -1,6 +1,6 @@
 FROM haskell:8.6.5
-
 RUN apt-get update && apt-get install git liblzma-dev build-essential libgflags-dev zlib1g-dev libbz2-dev liblz4-dev libzstd-dev librocksdb-dev libssl-dev libsystemd-dev -y
+RUN rm -rf /var/lib/apt/lists/*
 
 RUN git clone https://github.com/input-output-hk/cardano-wallet.git /cardano-wallet  \
   && cd /cardano-wallet && \
@@ -8,7 +8,10 @@ RUN git clone https://github.com/input-output-hk/cardano-wallet.git /cardano-wal
   git checkout 2de07c5cf90a54c041df9403f251775cd941c074
 
 WORKDIR /cardano-wallet
-RUN stack install
+RUN stack install && \
+  stack clean --full && \
+  rm -rf /cardano-wallet && rm -rf /root/.stack && rm -rf /opt
 
+WORKDIR /
 COPY wallet /wallet
 CMD /wallet/wallet-start.sh

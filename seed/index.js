@@ -22,20 +22,26 @@ const walletNames = [
   'Cat'
 ]
 
+const API_PORT = process.env.API_PORT || 8088
+
 async function main() {
   try {
-    await axios.post('http://localhost:8090/local/txs/signed', {
-      signedTx: faucetTx
-    })
 
-    // Wait for tx to propogate
-    console.log('Waiting for tx to propogate...')
-    await new Promise(res => setTimeout(res, 15000))
+    if (!process.env.IGNORE_FAUCET) {
+      await axios.post('http://localhost:8090/local/txs/signed', {
+        signedTx: faucetTx
+      })
+
+      // Wait for tx to propogate
+      console.log('Waiting for tx to propogate...')
+      await new Promise(res => setTimeout(res, 15000))
+    }
+
 
     await Promise.all(mnemonics.map((mnemonic, index) => {
       const name = walletNames[index]
       const payload = generateImportPayload(mnemonic, name)
-      return axios.post('http://localhost:8088/v2/wallets', payload)
+      return axios.post(`http://localhost:${API_PORT}/v2/wallets`, payload)
     }))
   } catch (e) {
     console.log(e)

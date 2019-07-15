@@ -7,19 +7,14 @@ const faucetTx = fs.readFileSync('faucet-txt.b64').toString()
 const mnemonics = fs.readFileSync('mnemonics.txt')
   .toString()
   .split('\n')
-  .slice(0, 10)
+  .slice(0, 5)
 
 const walletNames = [
   'Bob',
   'Alice',
   'Jane',
   'Charles',
-  'Jason',
-  'Roboman',
-  'Kate',
-  'Lewis',
-  'Syd',
-  'Cat'
+  'Jason'
 ]
 
 const API_PORT = process.env.API_PORT || 8088

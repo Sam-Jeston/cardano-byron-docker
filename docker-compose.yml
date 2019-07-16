@@ -1,83 +1,79 @@
 version: '3'
 services:
-  core0:
+  node.zero:
     image: samjeston/cardano-byron-sl
     # build:
     #   context: .
     #   dockerfile: DockerfileCardanoSl
     ports:
       - "3000:3000"
-    network_mode: host
     environment:
       - sysStart
     command: sh /byron/core0.sh
     volumes:
       - ./byron:/byron
-  core1:
+  node.one:
     image: samjeston/cardano-byron-sl
     # build:
     #   context: .
     #   dockerfile: DockerfileCardanoSl
     ports:
       - "3001:3001"
-    network_mode: host
     environment:
       - sysStart
     command: sh /byron/core1.sh
     volumes:
       - ./byron:/byron
-  core2:
+  node.two:
     image: samjeston/cardano-byron-sl
     # build:
     #   context: .
     #   dockerfile: DockerfileCardanoSl
     ports:
       - "3002:3002"
-    network_mode: host
     environment:
       - sysStart
     command: sh /byron/core2.sh
     volumes:
       - ./byron:/byron
-  relay:
+  relay.zero:
     image: samjeston/cardano-byron-sl
     # build:
     #   context: .
     #   dockerfile: DockerfileCardanoSl
     ports:
       - "3100:3100"
-    network_mode: host
     environment:
       - sysStart
     command: sh /byron/relay.sh
     volumes:
       - ./byron:/byron
-  http-bridge:
-    image: samjeston/cardano-http-bridge
-    # build:
-    #   context: .
-    #   dockerfile: DockerfileHttpBridge
-    ports:
-      - "8090:8090"
-    network_mode: host
-    volumes:
-      - ./wallet:/wallet
-  wallet:
-    image: samjeston/cardano-wallet
-    # build:
-    #   context: .
-    #   dockerfile: DockerfileCardanoWallet
-    ports:
-      - "8088:8088"
-    network_mode: host
-    volumes:
-      - ./wallet:/wallet
-  seed:
-    build:
-      context: ./seed
-      dockerfile: DockerfileSeed
-    network_mode: host
-  proxy:
-    image: wernight/ngrok
-    command: ngrok http localhost:8088
-    network_mode: host
+  # http-bridge:
+  #   image: samjeston/cardano-http-bridge
+  #   # build:
+  #   #   context: .
+  #   #   dockerfile: DockerfileHttpBridge
+  #   ports:
+  #     - "8090:8090"
+  #   network_mode: host
+  #   volumes:
+  #     - ./wallet:/wallet
+  # wallet:
+  #   image: samjeston/cardano-wallet
+  #   # build:
+  #   #   context: .
+  #   #   dockerfile: DockerfileCardanoWallet
+  #   ports:
+  #     - "8088:8088"
+  #   network_mode: host
+  #   volumes:
+  #     - ./wallet:/wallet
+  # seed:
+  #   build:
+  #     context: ./seed
+  #     dockerfile: DockerfileSeed
+  #   network_mode: host
+  # proxy:
+  #   image: wernight/ngrok
+  #   command: ngrok http localhost:8088
+  #   network_mode: host

@@ -1,0 +1,94 @@
+{
+    "nodes": {
+        "node0": {
+            "type": "core",
+            "port": 3000,
+            "dynamic-subscribe": [],
+            "fallbacks": 1,
+            "host": "node.zero",
+            "kademlia": false,
+            "region": "undefined",
+            "static-routes": [
+                [
+                    "node1"
+                ],
+                [
+                    "node2"
+                ],
+                [
+                    "relay"
+                ]
+            ],
+            "valency": 1
+        },
+        "node1": {
+            "type": "core",
+            "port": 3001,
+            "dynamic-subscribe": [],
+            "fallbacks": 1,
+            "host": "node.one",
+            "kademlia": false,
+            "maxSubscrs": null,
+            "public": false,
+            "region": "undefined",
+            "static-routes": [
+                [
+                    "node0"
+                ],
+                [
+                    "node1"
+                ],
+                [
+                    "relay"
+                ]
+            ],
+            "valency": 1
+        },
+        "node2": {
+            "type": "core",
+            "port": 3002,
+            "dynamic-subscribe": [],
+            "host": "node.two",
+            "fallbacks": 1,
+            "kademlia": false,
+            "maxSubscrs": null,
+            "public": false,
+            "region": "undefined",
+            "static-routes": [
+                [
+                    "node0"
+                ],
+                [
+                    "node1"
+                ],
+                [
+                    "relay"
+                ]
+            ],
+            "valency": 1
+        },
+        "relay": {
+            "type": "relay",
+            "port": 3100,
+            "dynamic-subscribe": [],
+            "fallbacks": 1,
+            "host": "relay.zero",
+            "kademlia": false,
+            "maxSubscrs": null,
+            "public": true,
+            "region": "undefined",
+            "static-routes": [
+                [
+                    "node0"
+                ],
+                [
+                    "node1"
+                ],
+                [
+                    "node2"
+                ]
+            ],
+            "valency": 1
+        }
+    }
+}

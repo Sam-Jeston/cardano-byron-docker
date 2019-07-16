@@ -10,7 +10,7 @@ cardano-node-simple \
   --keyfile "${stateDir}/keys/relay.sk" \
   --configuration-file "${stateDir}/configuration.yaml" \
   --configuration-key default \
-  --topology "${stateDir}/topology.json" \
+  --topology "/byron/topology.yaml" \
   --db-path /tmp/cardano-node-simple/db/relay \
   --listen 127.0.0.1:3100 \
   --log-config "${stateDir}/logs/relay/config.json" \

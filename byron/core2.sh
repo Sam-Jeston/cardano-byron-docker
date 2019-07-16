@@ -6,11 +6,11 @@ sleep 20
 
 cardano-node-simple \
   --system-start ${sysStart} \
-  --node-id core2 \
+  --node-id node2 \
   --keyfile "${stateDir}/keys/core2.sk" \
   --configuration-file "${stateDir}/configuration.yaml" \
   --configuration-key default \
-  --topology "${stateDir}/topology.json" \
+  --topology "/byron/topology.yaml" \
   --db-path /tmp/cardano-node-simple/db/core2 \
   --listen 127.0.0.1:3002 \
   --log-config "${stateDir}/logs/core2/config.json" \

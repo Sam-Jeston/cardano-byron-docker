@@ -1,6 +1,6 @@
 version: '3'
 services:
-  node.zero:
+  core.zero:
     image: samjeston/cardano-byron-sl
     # build:
     #   context: .
@@ -12,7 +12,7 @@ services:
     command: sh /byron/core0.sh
     volumes:
       - ./byron:/byron
-  node.one:
+  core.one:
     image: samjeston/cardano-byron-sl
     # build:
     #   context: .
@@ -24,7 +24,7 @@ services:
     command: sh /byron/core1.sh
     volumes:
       - ./byron:/byron
-  node.two:
+  core.two:
     image: samjeston/cardano-byron-sl
     # build:
     #   context: .

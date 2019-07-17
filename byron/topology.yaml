@@ -1,19 +1,19 @@
 {
     "nodes": {
-        "node0": {
+        "core0": {
             "type": "core",
             "port": 3000,
             "dynamic-subscribe": [],
             "fallbacks": 1,
-            "host": "node.zero",
+            "host": "core.zero",
             "kademlia": false,
-            "region": "undefined",
+            "region": "localhost",
             "static-routes": [
                 [
-                    "node1"
+                    "core1"
                 ],
                 [
-                    "node2"
+                    "core2"
                 ],
                 [
                     "relay"
@@ -21,22 +21,22 @@
             ],
             "valency": 1
         },
-        "node1": {
+        "core1": {
             "type": "core",
             "port": 3001,
             "dynamic-subscribe": [],
             "fallbacks": 1,
-            "host": "node.one",
+            "host": "core.one",
             "kademlia": false,
             "maxSubscrs": null,
             "public": false,
-            "region": "undefined",
+            "region": "localhost",
             "static-routes": [
                 [
-                    "node0"
+                    "core0"
                 ],
                 [
-                    "node1"
+                    "core2"
                 ],
                 [
                     "relay"
@@ -44,22 +44,22 @@
             ],
             "valency": 1
         },
-        "node2": {
+        "core2": {
             "type": "core",
             "port": 3002,
             "dynamic-subscribe": [],
-            "host": "node.two",
+            "host": "core.two",
             "fallbacks": 1,
             "kademlia": false,
             "maxSubscrs": null,
             "public": false,
-            "region": "undefined",
+            "region": "localhost",
             "static-routes": [
                 [
-                    "node0"
+                    "core0"
                 ],
                 [
-                    "node1"
+                    "core1"
                 ],
                 [
                     "relay"
@@ -73,19 +73,19 @@
             "dynamic-subscribe": [],
             "fallbacks": 1,
             "host": "relay.zero",
-            "kademlia": false,
+            "kademlia": true,
             "maxSubscrs": null,
             "public": true,
-            "region": "undefined",
+            "region": "localhost",
             "static-routes": [
                 [
-                    "node0"
+                    "core0"
                 ],
                 [
-                    "node1"
+                    "core1"
                 ],
                 [
-                    "node2"
+                    "core2"
                 ]
             ],
             "valency": 1
